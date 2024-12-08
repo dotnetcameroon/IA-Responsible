@@ -1,0 +1,4 @@
+python-dotenv
+azure-ai-contentsafety
+azure-core
+requests
