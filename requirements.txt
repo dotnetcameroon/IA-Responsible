@@ -1,4 +1,11 @@
+# python-dotenv : Permet de lire les variables d'environnement à partir d'un fichier .env, ce qui facilite la gestion des configurations sensibles.
 python-dotenv
+
+# azure-ai-contentsafety : Fournit des outils pour intégrer les services de sécurité de contenu d'Azure AI, permettant de détecter et de modérer le contenu potentiellement dangereux.
 azure-ai-contentsafety
+
+# azure-core : Contient les composants de base nécessaires pour utiliser les bibliothèques Azure SDK, offrant des fonctionnalités communes comme la gestion des connexions et des requêtes.
 azure-core
+
+# requests : Une bibliothèque simple et élégante pour faire des requêtes HTTP en Python, facilitant l'interaction avec les API web.
 requests
