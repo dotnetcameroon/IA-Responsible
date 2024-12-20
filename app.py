@@ -13,3 +13,15 @@ key = os.getenv("API")
 endpoint = os.getenv("ENPOINT")
 
 client=ContentSafetyClient(endpoint,AzureKeyCredential(key))
+
+@app.route('/',methods=['GET','POST'])
+def index():
+    if request.method == 'POST':
+        text_content = request.form['text_content']
+        result = analyze_text(text_content)
+        return render_template('index.html',result=result,text_content=text_content)
+    return render_template ('index.html')
+
+def analyze_text(text_content):
+    request = AnalyzeTextOptions (text=text_content)
+    try
