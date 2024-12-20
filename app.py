@@ -23,5 +23,25 @@ def index():
     return render_template ('index.html')
 
 def analyze_text(text_content):
-    request = AnalyzeTextOptions (text=text_content)
-    try
+    request = AnalyzeTextOptions(text=text_content)
+    try:
+        response = client.analyze_text(request)
+    except HttpResponseError as e:
+        return {"error": f"Analyze text failed. Error code: {e.error.code}, Error message: {e.error.message}"}
+
+    results = {
+        "Hate severity": next((item.severity for item in response.categories_analysis if item.category == TextCategory.HATE), 0),
+        "SelfHarm severity": next((item.severity for item in response.categories_analysis if item.category == TextCategory.SELF_HARM), 0),
+        "Sexual severity": next((item.severity for item in response.categories_analysis if item.category == TextCategory.SEXUAL), 0),
+        "Violence severity": next((item.severity for item in response.categories_analysis if item.category == TextCategory.VIOLENCE), 0)
+    }
+
+    conclusion = []
+    for category, severity in results.items():
+        if severity >= 4:
+            conclusion.append(f"{category} severity")
+
+    results["Conclusion"] = ", ".join(conclusion) if conclusion else "No high severity content detected."
+    return results
+
+
