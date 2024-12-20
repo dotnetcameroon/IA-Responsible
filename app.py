@@ -6,3 +6,8 @@ from azure.ai.contentsafety.models import TextCategory
 from azure.core.credentials import AzureKeyCredential
 from azure.core.exceptions import HttpResponseError
 from azure.ai.contentsafety.models import AnalyzeTextOptions
+
+app = Flask (__name__)
+load_dotenv()
+key = os.getenv("API")
+endpoint = os.getenv("ENPOINT")
