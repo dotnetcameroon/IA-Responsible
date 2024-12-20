@@ -11,3 +11,5 @@ app = Flask (__name__)
 load_dotenv()
 key = os.getenv("API")
 endpoint = os.getenv("ENPOINT")
+
+client=ContentSafetyClient(endpoint,AzureKeyCredential(key))
