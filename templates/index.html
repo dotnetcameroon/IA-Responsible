@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analyseur de Contenu Textuel</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>Analyseur de Contenu Textuel</h1>
+            <nav>
+                <ul>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#documentation">Documentation</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="container" id="home">
+        <h2>Analysez votre texte</h2>
+        <form method="post">
+            <textarea name="text_content" rows="10" cols="50">{{ text_content if text_content else '' }}</textarea><br>
+            <button type="submit">Analyser</button>
+        </form>
+        {% if result %}
+            <h2>Résultat de l'Analyse</h2>
+            <ul>
+                {% for key, value in result.items() %}
+                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+    <div class="container" id="documentation">
+        <h2>Documentation</h2>
+        <p>Bienvenue dans l'application d'analyse de contenu textuel. Cette application vous permet d'analyser le texte que vous fournissez et d'obtenir des résultats détaillés.</p>
+        <p>Pour utiliser l'application, entrez simplement votre texte dans la zone de texte ci-dessus et cliquez sur "Analyser". Les résultats de l'analyse seront affichés ci-dessous.</p>
+    </div>
+    <footer>
+        <p>Auteur: 
+            <a href="https://www.linkedin.com/in/jaures-beinjamin-%E2%9C%85%EF%B8%8F-297069211/" target="_blank">Jaures Beinjamin</a> & 
+          </p>
+    </footer>
+</body>
+</html>
