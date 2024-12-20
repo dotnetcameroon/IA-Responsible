@@ -10,9 +10,9 @@ from azure.ai.contentsafety.models import AnalyzeTextOptions
 app = Flask (__name__)
 load_dotenv()
 key = os.getenv("API")
-endpoint = os.getenv("ENPOINT")
+endpoint = os.getenv("ENDPOINT")
 
-client=ContentSafetyClient(endpoint,AzureKeyCredential(key))
+client = ContentSafetyClient(endpoint, AzureKeyCredential(key))
 
 @app.route('/',methods=['GET','POST'])
 def index():
