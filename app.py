@@ -45,3 +45,5 @@ def analyze_text(text_content):
     return results
 
 
+if __name__ == "__main__":
+    app.run(debug=True)
